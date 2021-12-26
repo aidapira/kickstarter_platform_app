@@ -26,6 +26,7 @@ if (env === 'development') {
 const pool = new Pool(connectionString);
 pool.on('connect', () => console.log('connected to db'));
 
+pool.query(`CREATE TABLE businesses(name text, description text, inspiration text)`).then(() => console.log('success'))
 
 const app = express();
 
