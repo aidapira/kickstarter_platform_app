@@ -1,8 +1,8 @@
 const path = require('path');
 const express = require("express");
 
-// const { Client } = require('pg');
 const { Pool } = require('pg'); 
+const PORT = process.env.PORT || 3001;
 
 const env = process.env.NODE_ENV || 'development';
 
@@ -26,7 +26,6 @@ if (env === 'development') {
 const pool = new Pool(connectionString);
 pool.on('connect', () => console.log('connected to db'));
 
-const PORT = process.env.PORT || 3001;
 
 const app = express();
 
