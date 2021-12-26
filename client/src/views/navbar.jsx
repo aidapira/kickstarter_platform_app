@@ -10,10 +10,10 @@ export default function Navbar() {
       <AppBar position="static">
           <Nav>
             <NavMenu>
-                <NavLink to="/create-posts" activeStyle>
+                <NavLink to="/create-posts">
                     Create a Post
                 </NavLink>
-                <NavLink to="/view-posts" activeStyle>
+                <NavLink to="/view-posts">
                     View Posts
                 </NavLink>
             </NavMenu>

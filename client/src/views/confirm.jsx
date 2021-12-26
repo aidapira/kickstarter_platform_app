@@ -1,13 +1,20 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {List, ListItem} from 'material-ui/List';
+// import {List, ListItem} from 'material-ui/List';
+import { List, ListItem, ListItemText } from '@material-ui/core';
+
 import Button from '@mui/material/Button';
 import '../content/formStyle.css';
+import { processForm } from '../controllers/processForm.ts';
 
 class FormBusinessName extends React.Component {
     continue = e => {
         e.preventDefault();
+
         //Process form
+        const { values } = this.props;
+        processForm(values);
+
         this.props.nextStep();
     }
 
@@ -26,21 +33,27 @@ class FormBusinessName extends React.Component {
                     </div>
                     <div className="confirm-form-field">
                         <List>
-                            <ListItem
-                                primaryText="Business Name"
-                                secondaryText= { businessName }
-                                style={styles.formListItems}
-                            />
-                            <ListItem
-                                primaryText="Business Description"
-                                secondaryText= { businessDescription }
-                                style={styles.formListItems}
-                            />
-                            <ListItem
-                                primaryText="Business Inspiration"
-                                secondaryText= { businessInspiration }
-                                style={styles.formListItems}
-                            />
+                            <ListItem >
+                                <ListItemText 
+                                    primary= "Business Name"
+                                    secondary= { businessName }
+                                    style={styles.formListItems}
+                                />
+                            </ListItem>
+                            <ListItem >
+                                <ListItemText 
+                                    primary= "Business Description"
+                                    secondary= { businessDescription }
+                                    style={styles.formListItems}
+                                />
+                            </ListItem>
+                            <ListItem >
+                                <ListItemText 
+                                    primary= "Business Inspiration"
+                                    secondary= { businessInspiration }
+                                    style={styles.formListItems}
+                                />
+                            </ListItem>
                         </List>
                     </div>
                     <div className="confirm-form-button">
