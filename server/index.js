@@ -36,20 +36,24 @@ app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 // Save form values in database
 app.post('/save-form-values', (req, res) => {
-    const businessName = req.body.businessName;
-    const businessDescription = req.body.businessDescription;
-    const businessInspiration = req.body.businessInspiration;
-
-    const query = {
-        text: 'INSERT INTO businesses (name, description, inspiration) VALUES ($1, $2, $3)',
-        values: [businessName, businessDescription, businessInspiration],
+    try {
+        const businessName = req.body.businessName;
+        const businessDescription = req.body.businessDescription;
+        const businessInspiration = req.body.businessInspiration;
+    
+        const query = {
+            text: 'INSERT INTO businesses (name, description, inspiration) VALUES ($1, $2, $3)',
+            values: [businessName, businessDescription, businessInspiration],
+        }
+    
+        // Run INSERT query
+        pool
+            .query(query)
+            .then(() => res.json("Success"))
+            .catch(err => console.log(err.stack))
+    } catch(err) {
+        console.log('error: ', err)
     }
-
-    // Run INSERT query
-    pool
-        .query(query)
-        .then(res => console.log('success'))
-        .catch(err => console.log(err.stack))
         
 })
 
