@@ -1,17 +1,30 @@
 const path = require('path');
 const express = require("express");
 
-const { Client } = require('pg');
+// const { Client } = require('pg');
+const { Pool } = require('pg'); 
 
-const client  = new Client({
-    host: "localhost",
-    user: "postgres",
-    port: "5432",
-    password: "root",
-    database: "postgres"
-})
+const env = process.env.NODE_ENV || 'development';
 
-client.connect();
+// Check the env and make connection accordingly
+if (env === 'development') {
+    const credentials = {
+        host: "localhost",
+        user: "postgres",
+        port: "5432",
+        password: "root",
+        database: "postgres"
+    }
+    connectionString = credentials;
+} else {
+    connectionString = {
+        connectionString: process.env.DATABASE_URL,
+        ssl: true
+    };
+};
+
+const pool = new Pool(connectionString);
+pool.on('connect', () => console.log('connected to db'));
 
 const PORT = process.env.PORT || 3001;
 
@@ -34,12 +47,11 @@ app.post('/save-form-values', (req, res) => {
     }
 
     // Run INSERT query
-    client
+    pool
         .query(query)
         .then(res => console.log('success'))
         .catch(err => console.log(err.stack))
         
-    client.end;
 })
 
 // All other GET requests not handled before will return our React app
