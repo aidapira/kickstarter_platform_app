@@ -1,8 +1,4 @@
-interface Businesses {
-    businessName: string,
-    businessDescription: string,
-    businessInspiration: string
-}
+import { Businesses } from "../models/businesses";
 
 export const processForm = async (values: Businesses) => {
 

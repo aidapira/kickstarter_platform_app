@@ -56,6 +56,14 @@ app.post('/save-form-values', (req, res) => {
         
 })
 
+// Fetch saved businesses
+app.get('/fetch-businesses', (req, res) => {
+    pool
+        .query(`SELECT * FROM businesses`)
+        .then((response) => res.json(response.rows))
+        .catch(err => console.log(err))
+})
+
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
