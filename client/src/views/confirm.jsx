@@ -27,7 +27,7 @@ class FormBusinessName extends React.Component {
         return ( 
             <MuiThemeProvider>
                     <div className='form-header'>
-                        <h3>Confirm Business Information</h3>
+                        <h1>Please Confirm Business Information</h1>
                     </div>
                     <div className="confirm-form-field">
                         <List>
