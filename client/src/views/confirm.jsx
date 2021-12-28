@@ -1,8 +1,6 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import {List, ListItem} from 'material-ui/List';
 import { List, ListItem, ListItemText } from '@material-ui/core';
-
 import Button from '@mui/material/Button';
 import '../content/formStyle.css';
 import { processForm } from '../controllers/processForm.ts';

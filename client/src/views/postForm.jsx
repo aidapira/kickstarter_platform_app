@@ -3,6 +3,8 @@ import FormBusinessDesc from "./formBusinessDesc";
 import FormBusinessName from './formBusinessName';
 import FormBusinessInsp from './formBusinessInsp';
 import Confirm from './confirm';
+import ViewPosts from "./viewPosts";
+import SuccessPage from "./success";
 
 class PostForm extends React.Component {
     state = {
@@ -74,7 +76,9 @@ class PostForm extends React.Component {
                     />
                 )
             case 5: 
-                return <h1>Success</h1>
+                return (
+                    <SuccessPage />
+                )
         }
     }
 }

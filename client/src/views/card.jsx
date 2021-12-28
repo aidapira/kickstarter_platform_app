@@ -9,9 +9,9 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
+import { useNavigate } from "react-router-dom";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -25,6 +25,8 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function BusinessCard({ index, businessName, businessDescription, businessInspiration }) {
+  let navigate = useNavigate();
+
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -57,7 +59,10 @@ export default function BusinessCard({ index, businessName, businessDescription,
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <Button size="small">Fund Project</Button>
+        <Button 
+          size="small"
+          onClick={() => {navigate("/payment-form/"+businessName)}}
+        >Fund Project</Button>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}

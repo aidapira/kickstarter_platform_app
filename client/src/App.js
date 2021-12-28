@@ -4,6 +4,7 @@ import "./App.css";
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 import PostForm from "./views/postForm";
 import ViewPosts from "./views/viewPosts";
+import PaymentForm from "./views/paymentForm";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         }/>
         <Route path="/create-posts" element={<PostForm />} />
         <Route path="/view-posts" element={<ViewPosts />} />
+        <Route path="/payment-form/:name" element={<PaymentForm />} />
       </Routes>
     </Router>
   );
