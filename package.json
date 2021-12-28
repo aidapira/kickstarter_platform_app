@@ -12,7 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.2",
-    "pg": "^8.7.1"
+    "pg": "^8.7.1",
+    "stripe": "^8.195.0"
   },
   "engines": {
     "node": "v16.12.0"
