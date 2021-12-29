@@ -66,7 +66,7 @@ export default function PaymentCheckout() {
                             onClick={redirectToCheckout}
                             disabled={isLoading}
                             variant="contained"
-                        >{isLoading ? "Loading..." :  "Pay"}</Button>
+                        >{isLoading ? "Loading..." :  "Make a Payment"}</Button>
                     </CardActions>
                 </Card>
             </Grid>
@@ -80,7 +80,7 @@ const styles = {
         width: "100%",
     },
     cardElement: {
-        backgroundColor: '#ffc8dd',
+        backgroundColor: '#D36582',
         textAlign: 'center',
         justifyContent: 'center',
         alignItems: 'center',
