@@ -31,13 +31,6 @@ if (env === 'development') {
 const pool = new Pool(connectionString);
 pool.on('connect', () => console.log('connected to db'));
 
-if(env != 'development') {
-    pool
-        .query(`TRUNCATE TABLE businesses`)
-        .then((response) => res.json(response.rows))
-        .catch(err => console.log(err))
-}
-
 const app = express();
 
 app.use(express.json());
