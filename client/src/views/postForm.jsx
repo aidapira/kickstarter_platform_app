@@ -2,7 +2,7 @@ import React from "react";
 import FormBusinessDesc from "./formBusinessDesc";
 import FormBusinessName from './formBusinessName';
 import FormBusinessInsp from './formBusinessInsp';
-import Confirm from './confirm';
+import FormConfirm from './confirm';
 import SuccessPage from "./success";
 
 class PostForm extends React.Component {
@@ -68,7 +68,7 @@ class PostForm extends React.Component {
                 )
             case 4: 
                 return (
-                    <Confirm
+                    <FormConfirm
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                         values={values}

@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import '../content/formStyle.css';
 import { processForm } from '../controllers/processForm.ts';
 
-class FormBusinessName extends React.Component {
+class FormConfirm extends React.Component {
     continue = e => {
         e.preventDefault();
 
@@ -84,4 +84,4 @@ const styles = {
     }
 }
  
-export default FormBusinessName;
+export default FormConfirm;

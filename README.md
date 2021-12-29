@@ -39,9 +39,17 @@ The /save-form-values API route is a POST REST API that will save the post value
 The response for this REST API is a string 'Success' if the save crud operation is performed successfully.
 
 ## Distinct design decisions with screenshots
+
+When application first opens, it renders the PostForm component. PostForm consist of a parent state that holds the step state that is used to determine which step of the form to render.
+
+The first step is entering the Business Name. That is rendered by FormBusinessName component, second step is entering business description that is rendered by FormBusinessDesc, and the third step is entering the business inspiration which is rendered by FormBusinessInsp component. All three components are shown in the below screenshots.
 ![alt text](https://github.com/aidapira/kickstarter_platform_app/blob/master/create_post1.PNG?raw=true)
 ![alt text](https://github.com/aidapira/kickstarter_platform_app/blob/master/create_post2.PNG?raw=true)
 ![alt text](https://github.com/aidapira/kickstarter_platform_app/blob/master/create_post3.PNG?raw=true)
+
+Since the values are stored in parent component's state variable, on clicking on the Back button, the textfields will be prepopulated by the previously entered values.
+Once user enters all values, the fourth step is confirmation. 
+
 ![alt text](https://github.com/aidapira/kickstarter_platform_app/blob/master/create_post4.PNG?raw=true)
 ![alt text](https://github.com/aidapira/kickstarter_platform_app/blob/master/post_confirmation.PNG?raw=true)
 ![alt text](https://github.com/aidapira/kickstarter_platform_app/blob/master/view_posts.PNG?raw=true)
@@ -50,3 +58,6 @@ The response for this REST API is a string 'Success' if the save crud operation 
 ![alt text](https://github.com/aidapira/kickstarter_platform_app/blob/master/stripe_checkout_page.PNG?raw=true)
 ![alt text](https://github.com/aidapira/kickstarter_platform_app/blob/master/cancel_payment_page.PNG?raw=true)
 ![alt text](https://github.com/aidapira/kickstarter_platform_app/blob/master/payment_success_page.PNG?raw=true)
+
+## URL of hosted application
+https://kickstarter-platform-app.herokuapp.com/create-posts

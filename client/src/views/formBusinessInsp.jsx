@@ -1,10 +1,10 @@
 import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import TextField from 'material-ui/TextField';
+import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 import Button from '@mui/material/Button';
 import '../content/formStyle.css';
 
-class FormBusinessDesc extends React.Component {
+class FormBusinessInsp extends React.Component {
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
@@ -17,19 +17,23 @@ class FormBusinessDesc extends React.Component {
 
     render() { 
         const { values, handleChange } = this.props;
+        const theme = createTheme()
 
         return ( 
-            <MuiThemeProvider>
+            <MuiThemeProvider theme={theme}>
                     <div className='form-header'>
                         <h1>Create a Post and Get Funded in 3 Simple Steps</h1>
                     </div>
                     <div className="form-field">
                         <TextField
-                            hintText="Enter Your Business Inspiration"
-                            floatingLabelText="Business Inspiration"
+                            variant="filled"
+                            color="secondary"
+                            placeholder="Enter Your Business Inspiration"
+                            label="Business Inspiration"
                             onChange={handleChange('businessInspiration')}
-                            defaultValue={values.businessInspiration}
+                            value={values.businessInspiration}
                             style={styles.formTextField}
+                            variant="filled"
                         />
                     </div>
                     <div className="form-button">
@@ -59,4 +63,4 @@ const styles = {
     }
 }
  
-export default FormBusinessDesc;
+export default FormBusinessInsp;
