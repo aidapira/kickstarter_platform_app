@@ -80,7 +80,7 @@ const styles = {
         width: "100%",
     },
     cardElement: {
-        backgroundColor: '#D36582',
+        backgroundColor: '#aa66cc',
         textAlign: 'center',
         justifyContent: 'center',
         alignItems: 'center',
