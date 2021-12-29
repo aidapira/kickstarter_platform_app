@@ -9,6 +9,7 @@ const env = process.env.NODE_ENV || 'development';
 const stripe = require('stripe')('sk_test_51KBkBBHVXQRoPqCbtpuupStsjXL7bGcRuXfWEBd0Qx1vH7zbzfeLQOTZWCgJrgJtlgSHnZNfGO9f1hWAfMM4khz900OLRFcsL6');
 
 // Check the env and make connection accordingly
+let page_url
 if (env === 'development') {
     const credentials = {
         host: "localhost",
@@ -18,11 +19,13 @@ if (env === 'development') {
         database: "postgres"
     }
     connectionString = credentials;
+    page_url ="http://localhost:3000"
 } else {
     connectionString = {
         connectionString: process.env.DATABASE_URL,
         ssl: { rejectUnauthorized: false }
     };
+    page_url ="https://kickstarter-platform-app.herokuapp.com/"
 };
 
 const pool = new Pool(connectionString);
@@ -64,6 +67,25 @@ app.get('/fetch-businesses', (req, res) => {
         .query(`SELECT * FROM businesses`)
         .then((response) => res.json(response.rows))
         .catch(err => console.log(err))
+})
+
+// Create checkout session for Stripe API
+app.post('/create-checkout-session', async (req, res) => {
+    const item = {
+        price: "price_1KBlwwHVXQRoPqCbdqtY9yi5",
+        quantity: 1
+    }
+
+    const session = await stripe.checkout.sessions.create({
+        mode: "payment",
+        success_url: `${page_url}/payment-success`,
+        cancel_url: `${page_url}/payment-cancel`,
+        payment_method_types: ['card'],
+        line_items: [item],
+    })
+    res.json({
+        id: session.id,
+    });
 })
 
 // All other GET requests not handled before will return our React app

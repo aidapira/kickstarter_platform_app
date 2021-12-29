@@ -11,7 +11,7 @@ import CardActions from '@mui/material/CardActions';
 
 let stripePromise
 const getStripe = () => {
-    if(!stripePromise) {
+    if (!stripePromise) {
         stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
     }
 
@@ -23,50 +23,50 @@ export default function PaymentCheckout() {
     const [stripeError, setStripeError] = useState(null);
     const [isLoading, setLoading] = useState(false);
 
-    const redirectToCheckout = async () => {
+    const ProcessCheckout = async () => {
         setLoading(true);
-        const item = {
-            price: "price_1KBlwwHVXQRoPqCbdqtY9yi5",
-            quantity: 1
+        const data = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
         }
-    
-        const checkoutOptions = {
-            lineItems: [item],
-            mode: "payment",
-            successUrl: `${window.location.origin}/payment-success`,
-            cancelUrl: `${window.location.origin}/payment-cancel`,
-        }
-    
         const stripe = await getStripe();
-        const { error} = await stripe.redirectToCheckout(checkoutOptions);
 
-        if(error) setStripeError(error.message);
-
-        setLoading(false);
+        await fetch('/create-checkout-session', data)
+            .then((response) => response.json())
+            .then((session) => {
+                stripe.redirectToCheckout({ sessionId: session.id });
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.log('Error: ', error)
+                setStripeError(error.message);
+            })
     }
-    
-    if(stripeError) alert(stripeError);
+
+    if (stripeError) alert(stripeError);
 
     return (
         <Grid container style={styles.gridContainer} justifyContent="center" alignItems="center">
             <Grid item xs={4} sm={4} md={4}>
-                <Card raised='true' style={styles.cardElement} >
+                <Card raised={true} style={styles.cardElement} >
                     <CardHeader
-                        title={'Funding '+name}
+                        title={'Funding ' + name}
                     />
                     <CardMedia
                         component="img"
                         height="194"
-                        image={require ("../static/images/image"+index+".jpg")}
+                        image={require("../static/images/image" + index + ".jpg")}
                         alt="alt"
                     />
                     <CardActions disableSpacing style={styles.cardActionElement}>
-                        <Button 
+                        <Button
                             size="small"
-                            onClick={redirectToCheckout}
+                            onClick={ProcessCheckout}
                             disabled={isLoading}
                             variant="contained"
-                        >{isLoading ? "Loading..." :  "Make a Payment"}</Button>
+                        >{isLoading ? "Loading..." : "Make a Payment"}</Button>
                     </CardActions>
                 </Card>
             </Grid>
@@ -90,5 +90,4 @@ const styles = {
         alignItems: 'center',
         margin: '10px',
     }
-    
 }

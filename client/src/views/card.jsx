@@ -38,7 +38,7 @@ export default function BusinessCard({ index, businessName, businessDescription,
   }
 
   return (
-    <Card sx={{ maxWidth: 345 }} raised='true'>
+    <Card sx={{ maxWidth: 345 }} raised={true}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: "#7FB8F0" }} aria-label="recipe">
