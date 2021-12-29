@@ -41,7 +41,7 @@ class FormBusinessDesc extends React.Component {
                         <Button
                             label="Back"
                             onClick={this.back}
-                            variant="outlined"
+                            variant="contained"
                             style={styles.button}
                         >Back</Button>
                     </div>
