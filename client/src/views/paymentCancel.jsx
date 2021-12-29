@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-const PaymentSuccess = () => {
+const PaymentCancel = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2} justifyContent="center" alignItems="center" style={styles.gridContainer}>
@@ -16,7 +16,7 @@ const PaymentSuccess = () => {
     )
 }
 
-export default PaymentSuccess;
+export default PaymentCancel;
 
 const styles = {
     gridContainer: {
