@@ -20,8 +20,7 @@ class ViewPosts extends React.Component {
         return (
             <Grid container style={styles.gridContainer} spacing={4}>
                 {this.state.businesses.map((business, index) => (
-                    <Grid item xs={12} sm={4} md={3} key={index}
-                        >
+                    <Grid item xs={12} sm={4} md={3} key={index}>
                         <BusinessCard 
                             index={index}
                             businessName={business.name} 

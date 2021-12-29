@@ -38,7 +38,7 @@ export default function BusinessCard({ index, businessName, businessDescription,
   }
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }} raised='true'>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: "#7FB8F0" }} aria-label="recipe">
@@ -61,7 +61,7 @@ export default function BusinessCard({ index, businessName, businessDescription,
       <CardActions disableSpacing>
         <Button 
           size="small"
-          onClick={() => {navigate("/payment-form/"+businessName)}}
+          onClick={() => {navigate("/payment-checkout/"+businessName+"/"+index)}}
         >Fund Project</Button>
         <ExpandMore
           expand={expanded}
