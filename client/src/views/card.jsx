@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
+import { styled } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Button from '@mui/material/Button';
+import Button from '@material-ui/core/Button';
 import { useNavigate } from "react-router-dom";
 
 const ExpandMore = styled((props) => {
@@ -41,7 +41,9 @@ export default function BusinessCard({ index, businessName, businessDescription,
     <Card sx={{ maxWidth: 345 }} raised={true}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: "#7FB8F0" }} aria-label="recipe">
+          <Avatar 
+            sx={{ bgcolor: "#7FB8F0" }} 
+            aria-label="recipe">
             {businessName.charAt(0)}
           </Avatar>
         }
@@ -54,7 +56,7 @@ export default function BusinessCard({ index, businessName, businessDescription,
         alt="alt"
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="inherit">
           Business Description: {businessDescription}
         </Typography>
       </CardContent>
@@ -62,6 +64,7 @@ export default function BusinessCard({ index, businessName, businessDescription,
         <Button 
           size="small"
           onClick={() => {navigate("/payment-checkout/"+businessName+"/"+index)}}
+          color="primary"
         >Fund Project</Button>
         <ExpandMore
           expand={expanded}

@@ -1,12 +1,12 @@
 import { useParams } from 'react-router';
-import Button from '@mui/material/Button';
+import Button from '@material-ui/core/Button';
 import { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardActions from '@mui/material/CardActions';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardActions from '@material-ui/core/CardActions';
 
 
 let stripePromise
@@ -66,6 +66,7 @@ export default function PaymentCheckout() {
                             onClick={ProcessCheckout}
                             disabled={isLoading}
                             variant="contained"
+                            color="primary"
                         >{isLoading ? "Loading..." : "Make a Payment"}</Button>
                     </CardActions>
                 </Card>

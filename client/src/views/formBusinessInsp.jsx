@@ -1,7 +1,7 @@
 import React from 'react';
 import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Button from '@mui/material/Button';
+import Button from '@material-ui/core/Button';
 import '../content/formStyle.css';
 
 class FormBusinessInsp extends React.Component {
@@ -40,12 +40,14 @@ class FormBusinessInsp extends React.Component {
                         <Button
                             label="Continue"
                             onClick={this.continue}
+                            color="primary"
                             variant="contained"
                         >Continue</Button>
                         <Button
                             label="Back"
                             onClick={this.back}
                             variant="contained"
+                            color="primary"
                             style={styles.button}
                         >Back</Button>
                     </div>

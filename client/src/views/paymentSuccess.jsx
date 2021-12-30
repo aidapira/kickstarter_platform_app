@@ -1,5 +1,5 @@
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
 
 const PaymentSuccess = () => {
     return (
@@ -20,6 +20,7 @@ export default PaymentSuccess;
 
 const styles = {
     gridContainer: {
-        textAlign: 'center'
+        textAlign: 'center',
+        width: '100%'
     },
 }

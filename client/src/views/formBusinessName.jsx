@@ -1,7 +1,7 @@
 import React from 'react';
 import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Button from '@mui/material/Button';
+import Button from '@material-ui/core/Button';
 import '../content/formStyle.css';
 
 class FormBusinessName extends React.Component {
@@ -35,6 +35,7 @@ class FormBusinessName extends React.Component {
                             label="Continue"
                             onClick={this.continue}
                             variant="contained"
+                            color="primary"
                         >Continue</Button>
                     </div>
             </MuiThemeProvider>

@@ -1,7 +1,7 @@
 import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 import { List, ListItem, ListItemText } from '@material-ui/core';
-import Button from '@mui/material/Button';
+import Button from '@material-ui/core/Button';
 import '../content/formStyle.css';
 import { processForm } from '../controllers/processForm.ts';
 
@@ -23,9 +23,10 @@ class FormConfirm extends React.Component {
 
     render() { 
         const { values: { businessName, businessDescription, businessInspiration } } = this.props;
+        const theme = createTheme()
 
         return ( 
-            <MuiThemeProvider>
+            <MuiThemeProvider theme={theme}>
                     <div className='form-header'>
                         <h1>Please Confirm Business Information</h1>
                     </div>
@@ -59,12 +60,14 @@ class FormConfirm extends React.Component {
                             label="Confirm & Continue"
                             onClick={this.continue}
                             variant="contained"
+                            color="primary"
                         >Confirm & Continue</Button>
                         <Button
                             label="Back"
                             onClick={this.back}
                             variant="contained"
                             style={styles.button}
+                            color="primary"
                         >Back</Button>
                     </div>
             </MuiThemeProvider>
